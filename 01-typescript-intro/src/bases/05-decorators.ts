@@ -1,8 +1,11 @@
 class NewPokemon {
-    constructor(
-        public readonly id: number,
-        public name: string,
-    ) {}
+    public readonly id: number;
+    public name: string;
+
+    constructor(id: number, name: string) {
+        this.id = id;
+        this.name = name;
+    }
 
     scream() {
         console.log(`NO QUIERO!!`);
@@ -17,7 +20,7 @@ class NewPokemon {
 
 const MyDecorator = () => {
     return ( target: Function ) => {
-        // console.log(target)
+         console.log(target)
         return NewPokemon;
     }
 }
@@ -26,11 +29,16 @@ const MyDecorator = () => {
 
 @MyDecorator()
 export class Pokemon {
+    public readonly id: number;
+    public name: string;
 
     constructor(
-        public readonly id: number,
-        public name: string,
-    ) {}
+        id: number,
+        name: string,
+    ) {
+        this.id = id;
+        this.name = name;
+    }
 
     scream() {
         console.log(`${ this.name.toUpperCase() }!!`)
